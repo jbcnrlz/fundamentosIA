@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix
 
 
 def breastCancerEstimateDecisionTree():
-    arqCSV = pd.read_csv('datasets/winscosindata.csv')
+    arqCSV = pd.read_csv('datasets/lungCancer.csv')
     dados = np.array(arqCSV)
     caracteristicas = dados[:, 2:-1].astype(np.float64)
     classes = dados[:, 1]
