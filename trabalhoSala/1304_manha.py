@@ -4,14 +4,14 @@ from sklearn.model_selection import train_test_split, cross_val_score, cross_val
 from sklearn.metrics import confusion_matrix
 
 def breastCancerEstimateDecisionTree():
-    arqCSV = pd.read_csv('datasets/winscosindata.csv')
+    arqCSV = pd.read_csv('datasets/lungCancer.csv')
     dados = np.array(arqCSV)
-    caracteristicas = dados[:,2:-1].astype(np.float64)
-    classes = dados[:,1]
+    caracteristicas = dados[:,3:-1].astype(np.float64)
+    classes = dados[:,-1]
 
     dTree = DecisionTreeClassifier(criterion='entropy')
     mets = ['precision_macro','recall_macro','f1_macro','accuracy']
-    scores = cross_validate(dTree,caracteristicas,classes,cv=10,scoring=mets)
+    scores = cross_validate(dTree,caracteristicas,classes,cv=5,scoring=mets)
     print("Métricas ========================")
     for s in scores:
         print("Média da %s => %f === desvio padrão %f" % (s,np.average(scores[s]),np.std(scores[s])))
