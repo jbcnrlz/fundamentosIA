@@ -3,6 +3,9 @@ from sklearn.svm import SVC
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
+from sklearn.inspection import DecisionBoundaryDisplay
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
 
 def loadDataset(pathDataset):
     datasetCSV = pd.read_csv(pathDataset)
@@ -21,5 +24,6 @@ def main():
     guessed = deClass.predict(X_test)
     print(classification_report(y_test, guessed))
     
+
 if __name__ == '__main__':
     main()
